@@ -1,0 +1,56 @@
+{
+  "campuses": {
+    "fukuoka": {
+      "name": "Fukuoka Campus",
+      "atmosphere": "Located in historic Dazaifu, close to Fukuoka city center. Large campus with a traditional academic atmosphere.",
+      "address": "3-11-25 Gojo, Dazaifu City, Fukuoka 818-0197",
+      "contact": "+81 (092) 922-5131, admit@fk.jue.ac.jp",
+      "reference": "https://www.jue.ac.jp/en/OUR_CAMPUSES/Fukuoka_Campus.html"
+    },
+    "shibuya": {
+      "name": "Tokyo Shibuya Campus",
+      "atmosphere": "In the heart of Tokyo's trends and business. Focused on management and creative/digital courses.",
+      "address": "24-5 Sakuragaoka-cho, Shibuya, Tokyo 150-0031",
+      "contact": "+81 (03) 3463-4112, juepost@tk.jue.ac.jp",
+      "reference": "https://www.jue.ac.jp/en/OUR_CAMPUSES/Tokyo_Shibuya_Campus.html"
+    },
+    "kobe": {
+      "name": "Kobe Sannomiya Campus",
+      "atmosphere": "Located in the international city of Kobe, focusing on global economics.",
+      "address": "8-1-1 Kumoidori, Chuo-ku, Kobe, Hyogo 651-0096",
+      "contact": "+81 (078) 241-3131",
+      "reference": "https://www.jue.ac.jp/en/OUR_CAMPUSES/KobeSannomiya_Campus.html"
+    }
+  },
+  "programs": {
+    "economics": "Fukuoka and Kobe campuses offering Economics and Global Economics.",
+    "management": "Fukuoka and Shibuya campuses focusing on modern business, venture, e-sports, and digital business.",
+    "special_courses": [
+      {
+        "name": "eSports Course",
+        "keywords": ["esports", "gaming", "sengoku"],
+        "description": "Collaboration with Sengoku Gaming. Focuses on eSports business and management.",
+        "reference": "https://www.jue.ac.jp/fukuoka/department_management/esports/"
+      },
+      {
+        "name": "Game/Animation Course",
+        "keywords": ["game", "animation", "creative"],
+        "description": "Creative business focus at Shibuya Campus.",
+        "reference": "https://www.jue.ac.jp/en/ADMISSION/Undergraduate_Programs.html"
+      }
+    ]
+  },
+  "admissions": {
+    "requirements": "12 years of education, JLPT N2 recommended, interview and document review.",
+    "scholarships": [
+      { "name": "Tsuzuki Scholarship", "details": "Tuition reduction for international students." },
+      { "name": "El Salvador Scholarship", "details": "Special partner scholarship." }
+    ],
+    "reference": "https://shibuya.jue.ac.jp/entry_tokyo/entry_oversea_tokyo/"
+  },
+  "support": {
+    "center": "International Exchange Center handles visas, scholarships, and life support.",
+    "dorms": "Dormitories available at all campuses (Tsuzuki, Gojoyama, Shibuya Residence, Sannomiya Dorm).",
+    "reference": "https://www.jue.ac.jp/en/CAMPUSLIFE/Student_Support.html"
+  }
+}

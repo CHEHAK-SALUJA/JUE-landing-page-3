@@ -463,7 +463,7 @@ const App = () => {
       {/* Community Row Header [NEW] */}
       <section className="community-cta reveal">
         <h2 className="community-home-text">
-          We understand your concerns <span className="animated-emoji">❓</span>
+          We understand your concerns <span className="animated-emoji">🤔</span>
         </h2>
       </section>
 

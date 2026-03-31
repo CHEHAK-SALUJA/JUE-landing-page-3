@@ -344,7 +344,7 @@ h3 {
 }
 
 .community-home-text {
-  color: var(--primary-color);
+  color: #DAA520; /* Changed to golden yellow */
   font-size: 2.2rem;
   font-weight: 800;
   text-transform: uppercase;
@@ -358,7 +358,7 @@ h3 {
 
 .animated-emoji {
   display: inline-block;
-  font-size: 2.8rem;
+  font-size: 3.5rem; /* Increased from 2.8rem */
   animation: emojiPop 2s ease-in-out infinite;
 }
 
@@ -450,7 +450,7 @@ h3 {
   }
 
   .animated-emoji {
-    font-size: 1.5rem !important; /* Still relatively big compared to text */
+    font-size: 2.2rem !important; /* Increased from 1.5rem */
   }
 }
 

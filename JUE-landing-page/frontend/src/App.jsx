@@ -409,26 +409,34 @@ const App = () => {
           </div>
           <div className="program-card">
             <div className="program-image-box">
-              <img src="/images/fukuokacampus02.jpg" alt="Economics" />
+              <img src="/images/fukuokacampus02.jpg" alt="Management" />
             </div>
             <div className="program-info-box">
-              <h4>Department of Economics</h4>
+              <h4>Department of Management</h4>
             </div>
           </div>
           <div className="program-card">
             <div className="program-image-box">
-              <img src="/images/LearningProgression01.jpg" alt="Economics" />
+              <img src="/images/Internship06.jpg" alt="Commerce" />
             </div>
             <div className="program-info-box">
-              <h4>Department of Economics</h4>
+              <h4>Department of Commerce</h4>
             </div>
           </div>
           <div className="program-card">
             <div className="program-image-box">
-              <img src="/images/Internship06.jpg" alt="Economics" />
+              <img src="/images/LearningProgression01.jpg" alt="Law" />
             </div>
             <div className="program-info-box">
-              <h4>Department of Economics</h4>
+              <h4>Department of Management Law</h4>
+            </div>
+          </div>
+          <div className="program-card">
+            <div className="program-image-box">
+              <img src="/images/jue-students.jpg" alt="Health and Sports" />
+            </div>
+            <div className="program-info-box">
+              <h4>Health & Sports Management</h4>
             </div>
           </div>
         </div>

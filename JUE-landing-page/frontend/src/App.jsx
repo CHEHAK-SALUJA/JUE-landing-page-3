@@ -52,13 +52,13 @@ const Counter = ({ target, duration = 800, suffix = "" }) => {
 
 const featureSlides = [
   {
-    title: "Why Japan?",
-    text: "Ranked among the safest countries in the world with a rich cultural heritage and advanced technology.",
+    title: "Why More Indian Students Are Choosing Japan?",
+    text: "World-Class Safety & Standards\nAffordable Living & Tuition\nPart-Time Work Permissions\nGlobal Career Opportunities\nLanguage-Driven Success\nModern Cities & Infrastructure\nIndian Food & Global Culture",
     image: "/images/why-japan.jpg"
   },
   {
-    title: "Why JUE?",
-    text: 'Focused on "Practical Economics" with hands-on experience in Japan\'s major economic hubs.',
+    title: "Why Indian Students Choose Japan University of Economics?",
+    text: "Affordable Tuition & Scholarships\nEnglish-Friendly Programs\nCareer & Internship Support\nModern City Campuses\nSafe & Global Environment\nHousing & Work Assistance",
     image: "/images/why-jue.jpg"
   },
   {
@@ -142,7 +142,17 @@ const FeatureSlider = () => {
       <div className={`feature-slider-box ${animClass}`}>
         <div className="feature-slider-text">
           <h2>{slide.title}</h2>
-          <p>{slide.text}</p>
+          <div className="feature-slider-content">
+            {slide.text.includes('\n') ? (
+              <ul className="feature-list">
+                {slide.text.split('\n').map((item, i) => (
+                  <li key={i}>{item}</li>
+                ))}
+              </ul>
+            ) : (
+              <p>{slide.text}</p>
+            )}
+          </div>
         </div>
         <div className="feature-slider-image">
           <img src={slide.image} alt={slide.title} />
@@ -378,29 +388,29 @@ const App = () => {
           <div className="circle-img-wrapper">
             <img src="/images/why-jue.jpg" alt="Top Ranked" />
           </div>
-          <h4>Top Ranked</h4>
-          <p>Top Ranked University</p>
+          <h4>Top Ranked University</h4>
+          <p>Study in Japan’s Top Cities – Tokyo, Kobe, Fukuoka</p>
         </div>
         <div className="info-bar-item">
           <div className="circle-img-wrapper">
             <img src="/images/scholarship-jue.jpg" alt="Scholarship" />
           </div>
-          <h4>Scholarship</h4>
-          <p>Affordable Tuition fee & Scholarship</p>
+          <h4>Special Scholarship for Indian Students</h4>
+          <p>Financial Support for Indian Students</p>
         </div>
         <div className="info-bar-item">
           <div className="circle-img-wrapper">
             <img src="/images/career-jue.jpg" alt="Career" />
           </div>
-          <h4>Career</h4>
-          <p>Global Career Opportunities</p>
+          <h4>Career Support</h4>
+          <p>Internships & Job Opportunities in Japan</p>
         </div>
         <div className="info-bar-item">
           <div className="circle-img-wrapper">
             <img src="/images/jue-students.jpg" alt="Campus" />
           </div>
-          <h4>Campus</h4>
-          <p>Safe and Welcoming Campus</p>
+          <h4>Campus Life</h4>
+          <p>Student Housing & International Community (20+ Nationalities)</p>
         </div>
       </section>
 
@@ -408,34 +418,43 @@ const App = () => {
       <section className="about reveal" id="about">
         <div className="about-container">
           <p className="about-text">
-            For over 60 years since 1956, the Tsuzuki Education Group has been developing individual expertise in the academic context and are willing to provide unlimited support in education.
+            <strong>A Trusted Japanese University with Over 60 Years of Educational Excellence</strong>
           </p>
-          <p className="about-text" style={{ marginTop: '20px' }}>
-            We are now one of the biggest educational corporations in Japan, having established six universities, twelve junior colleges and vocational schools, three high schools, a junior high school, and four kindergartens and nursery schools.
+          <p className="about-text" style={{ marginTop: '5px' }}>
+            Established in 1968 – Over 50 Years of Business Education. Recognized for excellence in business education and international student support in Japan. Campuses in Tokyo, Kobe and Fukuoka. Ranked among top universities in Japan for international students with students from 20+ countries. Part of Tsuzuki Education Group with 60+ years in education.
           </p>
         </div>
       </section>
 
-      {/* Stats Section (Numbers) */}
+      {/* Stats Section (Institutional Style) */}
       <section className="stats-numbers-row reveal">
-        <div className="stats-box">
-          <div className="stats-box-content">
-            <h3 className="stats-label">Enrollment</h3>
-            <div className="number-val"><Counter target="5700" suffix="+" /></div>
-          </div>
+        <div className="stat-unit">
+          <h3 className="stat-label">ENROLLMENT</h3>
+          <div className="stat-number"><Counter target="5700" suffix="+" /></div>
+          <p className="stat-subtext">Students from 20+ Countries</p>
         </div>
-        <div className="stats-box">
-          <div className="stats-box-content">
-            <h3 className="stats-label">Global Diversity</h3>
-            <div className="number-val"><Counter target="46.6" suffix="%" /></div>
-          </div>
+        <div className="stat-unit">
+          <h3 className="stat-label">GLOBAL DIVERSITY</h3>
+          <div className="stat-number"><Counter target="46.6" suffix="%" /></div>
+          <p className="stat-subtext">Ranked #2 In International Student Ratio</p>
         </div>
-        <div className="stats-box">
-          <div className="stats-box-content">
-            <h3 className="stats-label">Career Success</h3>
-            <div className="number-val"><Counter target="96.3" suffix="%" /></div>
-          </div>
+        <div className="stat-unit">
+          <h3 className="stat-label">CAREER SUCCESS</h3>
+          <div className="stat-number"><Counter target="96.3" suffix="%" /></div>
+          <p className="stat-subtext">Job Placement Rate</p>
         </div>
+      </section>
+
+      {/* Community Row Header [NEW] */}
+      <section className="community-cta reveal">
+        <h2 className="community-home-text">
+          We understand your concerns <span className="animated-emoji">❓</span>
+        </h2>
+      </section>
+
+      {/* Why JUE / Why Japan Slider */}
+      <section className="reveal" id="features">
+        <FeatureSlider />
       </section>
 
       {/* Programs We Offer Section [NEW] */}
@@ -483,16 +502,6 @@ const App = () => {
             </div>
           </div>
         </div>
-      </section>
-
-      {/* Community Row Header [NEW] */}
-      <section className="community-cta reveal">
-        <h2 className="community-home-text">Community That Feels Like Home</h2>
-      </section>
-
-      {/* Why JUE / Why Japan Slider */}
-      <section className="reveal" id="features">
-        <FeatureSlider />
       </section>
 
       {/* Campus Highlights Section */}

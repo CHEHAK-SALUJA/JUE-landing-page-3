@@ -288,7 +288,34 @@ const HighlightCarousel = () => {
   );
 };
 
+const heroSliderImages = [
+  '/images/hero.png',
+  '/images/graduate00.jpg',
+  '/images/LearningProgression01.jpg',
+  '/images/support04.jpg',
+  '/images/Undergraduate00.jpg',
+  '/images/why-jue.jpg'
+];
+
+const heroSubtitles = [
+  "JUE supports Indian students who want to study in Japan and build their careers through affordable tuition fees, scholarships, admission guidance, and career support.",
+  "Special Scholarships for Indian Students",
+  "Affordable Tuition Fees & Career Support in Japan",
+  "Study with Experienced Professors and Students from 20+ Nationalities",
+  "Rose cafe and modern campus facilities",
+  "English friendly programs"
+];
+
 const App = () => {
+  const [heroIndex, setHeroIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setHeroIndex(prev => (prev + 1) % heroSliderImages.length);
+    }, 4000); // 4 seconds transition
+    return () => clearInterval(timer);
+  }, []);
+
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -319,10 +346,26 @@ const App = () => {
 
       {/* Hero Section */}
       <header className="hero">
+        {heroSliderImages.map((img, idx) => (
+          <div
+            key={idx}
+            className={`hero-image-bg ${idx === heroIndex ? 'active' : ''}`}
+            style={{ backgroundImage: `url(${img})` }}
+          />
+        ))}
         <div className="hero-content">
-          <h1>STUDY IN JAPAN</h1>
+          <h1 className="hero-main-title">Studying in Japan is Now Easier for Indian Students with Japan University of Economics (JUE)</h1>
           <div className="hero-line" />
-          <p>Build Your Global Career with Japan University Of Economics</p>
+          <div className="hero-subtitle-container">
+            {heroSubtitles.map((text, idx) => (
+              <p
+                key={idx}
+                className={`hero-subtitle ${idx === heroIndex ? 'active' : ''}`}
+              >
+                {text}
+              </p>
+            ))}
+          </div>
         </div>
       </header>
 

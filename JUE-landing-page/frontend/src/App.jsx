@@ -52,6 +52,11 @@ const Counter = ({ target, duration = 800, suffix = "" }) => {
 
 const featureSlides = [
   {
+    title: "Why Indian Parents Are Choosing Japan?",
+    text: "World's Safest Environment\nDisciplined & Secure for All\nMore Affordable Than the West\nIndian Food & Lifestyle Support\nGlobal Career Opportunities\nStrong International Reputation",
+    image: "/images/why-parents.png"
+  },
+  {
     title: "Why More Indian Students Are Choosing Japan?",
     text: "World-Class Safety & Standards\nAffordable Living & Tuition\nPart-Time Work Permissions\nGlobal Career Opportunities\nLanguage-Driven Success\nModern Cities & Infrastructure\nIndian Food & Global Culture",
     image: "/images/why-japan.jpg"
@@ -62,24 +67,34 @@ const featureSlides = [
     image: "/images/why-jue.jpg"
   },
   {
-    title: "Career & Placement",
-    text: "Our dedicated career center ensures a 96%+ success rate for international students.",
+    title: "Worried About Career & Placement?",
+    text: "Internship Opportunities During Study\nComprehensive Job-Hunting Support\nResume & Interview Preparation\nPersonalized Career Guidance\nConnect with Top Japanese Companies\nDedicated International Placement",
     image: "/images/career-jue.jpg"
   },
   {
-    title: "Japanese Language",
-    text: "Comprehensive support programs to achieve JLPT N2 and beyond during your studies.",
+    title: "Worried About Japanese Language?",
+    text: "English-Friendly Classes Available\nIntegrated University Language Lessons\nLearn While Studying Your Degree\nDaily Life & Part-Time Job Support\nJLPT Preparation Assistance\nBoost Your Global Career Opportunities",
     image: "/images/language-jue.jpg"
   },
   {
-    title: "Accommodation",
-    text: "Modern, safe, and affordable student dormitories in Tokyo, Fukuoka, and Kobe.",
+    title: "Worried About Accommodation?",
+    text: "University Accommodation Support\nSafe & Affordable Housing Options\nSeparate Dorms for Boys & Girls\nConvenient Locations Near Campus\nFree Shuttle Bus Access Available\nSecure International Environment",
     image: "/images/accommodation-jue.jpg"
   },
   {
-    title: "Scholarships",
-    text: "Generous tuition reductions and access to prestigious MEXT/JASSO funding opportunities.",
+    title: "Scholarships & Financial Support",
+    text: "International Student Scholarships\nTuition Fee Reduction Options\nExpert Application Guidance\nCompetitive Global Affordability",
     image: "/images/scholarship-jue.jpg"
+  },
+  {
+    title: "Worried About Visa & Documents?",
+    text: "Student Visa Application Guidance\nComplete Documentation Support\nStep-by-Step Assistance\nUniversity-Issued Certificates\nDedicated Visa Compliance Team",
+    image: "/images/visa-jue.png"
+  },
+  {
+    title: "Worried About Arrival in Japan?",
+    text: "Flight Booking & Travel Advice\nAirport Pickup Support Information\nPost-Arrival Settling-In Assistance\nResidence Registration Help\nBank Account Setup Support",
+    image: "/images/travel-jue.png"
   }
 ];
 

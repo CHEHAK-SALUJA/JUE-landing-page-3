@@ -564,7 +564,7 @@ const App = () => {
             <iframe
               width="100%"
               height="100%"
-              src="https://www.youtube.com/embed/tB1vYUFAn5I"
+              src="https://www.youtube.com/embed/tB1vYUFAn5I?autoplay=1&mute=1&loop=1&playlist=tB1vYUFAn5I"
               title="JUE University Life"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

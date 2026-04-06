@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
 import ChatWidget from './components/ChatWidget';
 import './index.css';
+import namasteIcon from './assets/namaste.png';
 
 const Counter = ({ target, duration = 800, suffix = "" }) => {
   const [count, setCount] = useState(0);
@@ -417,11 +418,44 @@ const JourneySection = () => {
   );
 };
 
+const statsSets = [
+  [
+    { title: "Top Ranked University", label: "ENROLLMENT", value: "5,700+" },
+    { title: "Safe and Welcoming Campus", label: "GLOBAL DIVERSITY", value: "46.6%" },
+    { title: "Affordable Tuition fee & Scholarship", label: "CAREER SUCCESS", value: "96.3%" },
+    { title: "Global Career Opportunities", label: "Students from", value: "20+ Countries" }
+  ],
+  [
+    { title: "World-Class Faculties", label: "EXPERT PROFESSORS", value: "300+" },
+    { title: "Modern Infrastructure", label: "HIGH-TECH LABS", value: "50+" },
+    { title: "Guaranteed Placement", label: "ALUMNI NETWORK", value: "20,000+" },
+    { title: "Beautiful Surroundings", label: "CAMPUS AREA", value: "100+ Acres" }
+  ]
+];
+
 const App = () => {
   const [heroIndex, setHeroIndex] = useState(0);
   const [selectedProgram, setSelectedProgram] = useState("Department of Economics");
   const [showStories, setShowStories] = useState(false);
   const [openFaqIndex, setOpenFaqIndex] = useState(null);
+  
+  const [statSetIndex, setStatSetIndex] = useState(0);
+  const [statAnim, setStatAnim] = useState('active');
+
+  useEffect(() => {
+    const statsTimer = setInterval(() => {
+      setStatAnim('slide-out');
+      setTimeout(() => {
+        setStatSetIndex(prev => (prev + 1) % statsSets.length);
+        setStatAnim('slide-in');
+        setTimeout(() => {
+          setStatAnim('active');
+        }, 100); // Wait brief moment, then slide to active
+      }, 500); // 500ms slide out duration
+    }, 4500); // cycle every 4.5 seconds
+
+    return () => clearInterval(statsTimer);
+  }, []);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -490,53 +524,35 @@ const App = () => {
 
       {/* Indian Welcome Section [NEW] */}
       <section className="indian-welcome reveal">
+        <h2 className="welcome-title">We welcome students from India <img src={namasteIcon} alt="Namaste" className="namaste-icon" /></h2>
         <div className="welcome-container">
-          <h2 className="welcome-title">We welcome students from India 🙏</h2>
-          <p className="welcome-text">
-            For over 60 years since 1956, the Tsuzuki Education Group has been developing individual expertise in the academic context and are willing to provide unlimited support in education. We are now one of the biggest educational corporations in Japan, having established six universities, twelve junior colleges and vocational schools, three high schools, a junior high school, and four kindergartens and nursery schools.
-          </p>
+          <div className="welcome-text-container">
+            <p className="welcome-text-bold">
+              For over 60 years since 1956, the Tsuzuki Education Group has been developing individual expertise in the academic context and are willing to provide unlimited support in education.
+            </p>
+            <p className="welcome-text-normal">
+              We are now one of the biggest educational corporations in Japan, having established six universities, twelve junior colleges and vocational schools, three high schools, a junior high school, and four kindergartens and nursery schools.
+            </p>
+          </div>
         </div>
       </section>
 
       {/* Navy Stats Section [NEW] */}
       <section className="navy-stats reveal">
         <div className="stats-grid">
-          <div className="stats-block">
-            <div className="block-inner">
-              <h3 className="block-title">Top Ranked University</h3>
-              <div className="stat-detail">
-                <span className="stat-label">ENROLLMENT</span>
-                <span className="stat-value">5,700+</span>
+          {statsSets[statSetIndex].map((stat, index) => (
+            <div className="stats-block" key={index}>
+              <div className="block-inner">
+                <div className={`stats-slider-wrapper ${statAnim}`}>
+                  <h3 className="block-title">{stat.title}</h3>
+                  <div className="stat-detail">
+                    <span className="stat-label">{stat.label}</span>
+                    <span className="stat-value">{stat.value}</span>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="stats-block">
-            <div className="block-inner">
-              <h3 className="block-title">Safe and Welcoming Campus</h3>
-              <div className="stat-detail">
-                <span className="stat-label">GLOBAL DIVERSITY</span>
-                <span className="stat-value">46.6%</span>
-              </div>
-            </div>
-          </div>
-          <div className="stats-block">
-            <div className="block-inner">
-              <h3 className="block-title">Affordable Tuition fee & Scholarship</h3>
-              <div className="stat-detail">
-                <span className="stat-label">CAREER SUCCESS</span>
-                <span className="stat-value">96.3%</span>
-              </div>
-            </div>
-          </div>
-          <div className="stats-block">
-            <div className="block-inner">
-              <h3 className="block-title">Global Career Opportunities</h3>
-              <div className="stat-detail">
-                <span className="stat-label">Students from</span>
-                <span className="stat-value">20+ Countries</span>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
       </section>
 

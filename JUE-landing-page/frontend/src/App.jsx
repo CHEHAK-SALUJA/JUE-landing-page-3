@@ -331,8 +331,97 @@ const heroSubtitles = [
   "English friendly programs"
 ];
 
+const programDetails = {
+  "Department of Economics": "Learn to analyze complex markets, understand economic policies, and navigate the global financial landscape. Our economics program at JUE focuses on practical applications and international trade dynamics.",
+  "Department of Management": "Master the art of leadership and organizational strategy. This course provides a deep dive into corporate efficiency, team building, and strategic decision-making for future global business leaders.",
+  "Department of Commerce": "Explore the essentials of international trade, marketing, and accounting. We equip you with the technical skills and market insights necessary for success in the competitive global commercial sector.",
+  "Department of Management Law": "Understand the intersection of business and legal frameworks. This unique program covers corporate governance, commercial law, and regulatory compliance essential for modern industrial management.",
+  "Health & Sports Management": "Turn your passion for athletics into a career. Our program combines business acumen with specialized knowledge in sports facility operations, health promotion, and wellness industry management."
+};
+
+const journeySteps = [
+  { title: "Apply Online", sub: "Submit application securely", color: "blue", align: "text-pos-top", t: 0.05 },
+  { title: "Free Counseling", sub: "Personal guidance from our team", color: "blue", align: "text-pos-right", t: 0.20 },
+  { title: "Document Check", sub: "Academic records are reviewed", color: "blue", align: "text-pos-left", t: 0.33 },
+  { title: "Online Interview", sub: "Interaction with university", color: "blue", align: "text-pos-right", t: 0.46 },
+  { title: "Receive Admission", sub: "Get official offer letter", color: "green", align: "text-pos-left", t: 0.58 },
+  { title: "Connect with Students", sub: "Interact with current students", color: "blue", align: "text-pos-right", t: 0.70 },
+  { title: "Visa & COE Support", sub: "Complete your visa process", color: "blue", align: "text-pos-left", t: 0.82 },
+  { title: "Fly to Japan", sub: "Begin journey with confidence", color: "green", align: "text-pos-bottom", t: 0.95 }
+];
+
+const faqsList = [
+  { q: "How do I apply?", a: "Submit your application securely through our online admission portal with the required documents." },
+  { q: "How can I apply for a scholarship?", a: "Eligible international students can apply for JUE's special scholarships during the standard admission pipeline." },
+  { q: "How do I apply for a visa?", a: "JUE provides comprehensive COE support and guides you through every step of the Japanese student visa process." },
+  { q: "Are there vegetarian/halal food options?", a: "Yes, our cafeteria and local urban campuses are surrounded by diverse dining options, and we provide guidance for students with specific dietary needs." },
+  { q: "What is the safety level in Japan?", a: "Japan is consistently ranked as one of the safest countries globally. Students can safely travel and live even late at night." },
+  { q: "Can I work part-time while studying?", a: "International students are generally allowed to work up to 28 hours per week with a permit, offering great opportunities for cultural immersion." }
+];
+
+const JourneySection = () => {
+  // S-Curve Bezier Path
+  const pathData = "M 20 85 C 80 85, 20 15, 80 15";
+
+  // helper to get precise coordinates along cubic bezier for any t between 0 and 1
+  const getBezierPoint = (t, p0, p1, p2, p3) => {
+    const mt = 1 - t;
+    return mt * mt * mt * p0 + 3 * mt * mt * t * p1 + 3 * mt * t * t * p2 + t * t * t * p3;
+  };
+
+  return (
+    <section className="journey-wrapper reveal" id="journey">
+      <div className="journey-header">
+        <h2>Your Journey from India to Japan <span className="arrow">→</span></h2>
+      </div>
+      <div className="journey-container">
+        {/* Maps */}
+        <img src="/images/india_map-removebg-preview.png" alt="India" className="map-india" />
+        <img src="/images/japan_map-removebg-preview.png" alt="Japan" className="map-japan" />
+
+        <svg className="journey-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+          {/* Animated Dotted Line */}
+          <path 
+            id="flight-path"
+            d={pathData} 
+            fill="none" 
+            stroke="#003B6F" 
+            strokeWidth="0.4" 
+            strokeDasharray="1.5, 1.5" 
+            vectorEffect="non-scaling-stroke"
+          />
+          
+          {/* Auto-Rotating SVG Airplane animating over exact path */}
+          <image href="/images/airplane-removebg-preview.png" width="12" height="12" x="-6" y="-6">
+             <animateMotion dur="12s" repeatCount="indefinite" rotate="auto" path={pathData} />
+          </image>
+        </svg>
+
+        {/* Dynamic Markers mathematically guaranteed to fall perfectly on the SVG cubic bezier path */}
+        {journeySteps.map((step, idx) => {
+           const x = getBezierPoint(step.t, 20, 80, 20, 80);
+           const y = getBezierPoint(step.t, 85, 85, 15, 15);
+           const dotColor = step.color === 'green' ? '#2ecc71' : '#3498db';
+
+           return (
+             <div key={idx} className="journey-marker" style={{ left: `${x}%`, top: `${y}%`, borderColor: dotColor }}>
+               <div className={`step-text-container ${step.align}`}>
+                 <div className="step-title" style={{ color: dotColor }}>{step.title}</div>
+                 <div className="step-sub">{step.sub}</div>
+               </div>
+             </div>
+           );
+        })}
+      </div>
+    </section>
+  );
+};
+
 const App = () => {
   const [heroIndex, setHeroIndex] = useState(0);
+  const [selectedProgram, setSelectedProgram] = useState("Department of Economics");
+  const [showStories, setShowStories] = useState(false);
+  const [openFaqIndex, setOpenFaqIndex] = useState(null);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -356,6 +445,9 @@ const App = () => {
 
   return (
     <div className="app">
+      {/* Sticky Apply Button */}
+      <button className="sticky-apply-btn">APPLY NOW</button>
+
       {/* Main Navigation Bar [NEW] */}
       <header className="main-nav-bar">
         <div className="nav-container">
@@ -394,71 +486,152 @@ const App = () => {
         </div>
       </header>
 
-      {/* White Strip */}
-      <div className="white-strip"></div>
+      {/* White Strip removed to reduce vertical space */}
 
-      {/* Circular Info Bar */}
-      <section className="info-bar-row">
-        <div className="info-bar-item">
-          <div className="circle-img-wrapper">
-            <img src="/images/why-jue.jpg" alt="Top Ranked" />
-          </div>
-          <h4>Top Ranked University</h4>
-          <p>Study in Japan’s Top Cities – Tokyo, Kobe, Fukuoka</p>
-        </div>
-        <div className="info-bar-item">
-          <div className="circle-img-wrapper">
-            <img src="/images/scholarship-jue.jpg" alt="Scholarship" />
-          </div>
-          <h4>Special Scholarship for Indian Students</h4>
-          <p>Financial Support for Indian Students</p>
-        </div>
-        <div className="info-bar-item">
-          <div className="circle-img-wrapper">
-            <img src="/images/career-jue.jpg" alt="Career" />
-          </div>
-          <h4>Career Support</h4>
-          <p>Internships & Job Opportunities in Japan</p>
-        </div>
-        <div className="info-bar-item">
-          <div className="circle-img-wrapper">
-            <img src="/images/jue-students.jpg" alt="Campus" />
-          </div>
-          <h4>Campus Life</h4>
-          <p>Student Housing & International Community (20+ Nationalities)</p>
-        </div>
-      </section>
-
-      {/* About Section */}
-      <section className="about reveal" id="about">
-        <div className="about-container">
-          <p className="about-text">
-            <strong>A Trusted Japanese University with Over 60 Years of Educational Excellence</strong>
-          </p>
-          <p className="about-text" style={{ marginTop: '5px' }}>
-            Established in 1968 – Over 50 Years of Business Education. Recognized for excellence in business education and international student support in Japan. Campuses in Tokyo, Kobe and Fukuoka. Ranked among top universities in Japan for international students with students from 20+ countries. Part of Tsuzuki Education Group with 60+ years in education.
+      {/* Indian Welcome Section [NEW] */}
+      <section className="indian-welcome reveal">
+        <div className="welcome-container">
+          <h2 className="welcome-title">We welcome students from India 🙏</h2>
+          <p className="welcome-text">
+            For over 60 years since 1956, the Tsuzuki Education Group has been developing individual expertise in the academic context and are willing to provide unlimited support in education. We are now one of the biggest educational corporations in Japan, having established six universities, twelve junior colleges and vocational schools, three high schools, a junior high school, and four kindergartens and nursery schools.
           </p>
         </div>
       </section>
 
-      {/* Stats Section (Institutional Style) */}
-      <section className="stats-numbers-row reveal">
-        <div className="stat-unit">
-          <h3 className="stat-label">ENROLLMENT</h3>
-          <div className="stat-number"><Counter target="5700" suffix="+" /></div>
-          <p className="stat-subtext">Students from 20+ Countries</p>
-        </div>
-        <div className="stat-unit">
-          <h3 className="stat-label">GLOBAL DIVERSITY</h3>
-          <div className="stat-number"><Counter target="46.6" suffix="%" /></div>
-          <p className="stat-subtext">Ranked #2 In International Student Ratio</p>
-        </div>
-        <div className="stat-unit">
-          <h3 className="stat-label">CAREER SUCCESS</h3>
-          <div className="stat-number"><Counter target="96.3" suffix="%" /></div>
-          <p className="stat-subtext">Job Placement Rate</p>
+      {/* Navy Stats Section [NEW] */}
+      <section className="navy-stats reveal">
+        <div className="stats-grid">
+          <div className="stats-block">
+            <div className="block-inner">
+              <h3 className="block-title">Top Ranked University</h3>
+              <div className="stat-detail">
+                <span className="stat-label">ENROLLMENT</span>
+                <span className="stat-value">5,700+</span>
+              </div>
+            </div>
+          </div>
+          <div className="stats-block">
+            <div className="block-inner">
+              <h3 className="block-title">Safe and Welcoming Campus</h3>
+              <div className="stat-detail">
+                <span className="stat-label">GLOBAL DIVERSITY</span>
+                <span className="stat-value">46.6%</span>
+              </div>
+            </div>
+          </div>
+          <div className="stats-block">
+            <div className="block-inner">
+              <h3 className="block-title">Affordable Tuition fee & Scholarship</h3>
+              <div className="stat-detail">
+                <span className="stat-label">CAREER SUCCESS</span>
+                <span className="stat-value">96.3%</span>
+              </div>
+            </div>
+          </div>
+          <div className="stats-block">
+            <div className="block-inner">
+              <h3 className="block-title">Global Career Opportunities</h3>
+              <div className="stat-detail">
+                <span className="stat-label">Students from</span>
+                <span className="stat-value">20+ Countries</span>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
+
+      {/* Welcome JUE Section [NEW] */}
+      <section className="welcome-jue reveal">
+        <h2 className="welcome-jue-title">Welcome to Japan University of Economics (JUE)</h2>
+        <div className="video-section">
+          <div className="video-container">
+            <iframe
+              width="100%"
+              height="100%"
+              src="https://www.youtube.com/embed/tB1vYUFAn5I"
+              title="JUE University Life"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+          </div>
+        </div>
+      </section>
+
+      {/* Programs We Offer Section [NEW] */}
+      <section className="programs reveal" id="programs">
+        <h2 className="programs-title">PROGRAMS WE OFFER</h2>
+        <div className="programs-grid">
+          <div 
+            className={`program-card ${selectedProgram === "Department of Economics" ? 'active-card' : ''}`}
+            onClick={() => setSelectedProgram("Department of Economics")}
+          >
+            <div className="program-image-box">
+              <img src="/images/Undergraduate00.jpg" alt="Economics" />
+            </div>
+            <div className="program-info-box">
+              <h4>Department of Economics</h4>
+            </div>
+          </div>
+          <div 
+            className={`program-card ${selectedProgram === "Department of Management" ? 'active-card' : ''}`}
+            onClick={() => setSelectedProgram("Department of Management")}
+          >
+            <div className="program-image-box">
+              <img src="/images/fukuokacampus02.jpg" alt="Management" />
+            </div>
+            <div className="program-info-box">
+              <h4>Department of Management</h4>
+            </div>
+          </div>
+          <div 
+            className={`program-card ${selectedProgram === "Department of Commerce" ? 'active-card' : ''}`}
+            onClick={() => setSelectedProgram("Department of Commerce")}
+          >
+            <div className="program-image-box">
+              <img src="/images/Internship06.jpg" alt="Commerce" />
+            </div>
+            <div className="program-info-box">
+              <h4>Department of Commerce</h4>
+            </div>
+          </div>
+          <div 
+            className={`program-card ${selectedProgram === "Department of Management Law" ? 'active-card' : ''}`}
+            onClick={() => setSelectedProgram("Department of Management Law")}
+          >
+            <div className="program-image-box">
+              <img src="/images/LearningProgression01.jpg" alt="Law" />
+            </div>
+            <div className="program-info-box">
+              <h4>Department of Management Law</h4>
+            </div>
+          </div>
+          <div 
+            className={`program-card ${selectedProgram === "Health & Sports Management" ? 'active-card' : ''}`}
+            onClick={() => setSelectedProgram("Health & Sports Management")}
+          >
+            <div className="program-image-box">
+              <img src="/images/jue-students.jpg" alt="Health and Sports" />
+            </div>
+            <div className="program-info-box">
+              <h4>Health & Sports Management</h4>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* About Selected Program Section [NEW] */}
+      <section className="about-program-section reveal">
+        <div className="about-program">
+          <h2 className="about-program-title">About {selectedProgram}</h2>
+          <p className="about-program-text">
+            {programDetails[selectedProgram]}
+          </p>
+        </div>
+      </section>
+
+      {/* New Journey Section Implementation */}
+      <JourneySection />
 
       {/* Community Row Header [NEW] */}
       <section className="community-cta reveal">
@@ -472,151 +645,86 @@ const App = () => {
         <FeatureSlider />
       </section>
 
-      {/* Programs We Offer Section [NEW] */}
-      <section className="programs reveal" id="programs">
-        <h2 className="programs-title">PROGRAMS WE OFFER</h2>
-        <div className="programs-grid">
-          <div className="program-card">
-            <div className="program-image-box">
-              <img src="/images/Undergraduate00.jpg" alt="Economics" />
-            </div>
-            <div className="program-info-box">
-              <h4>Department of Economics</h4>
-            </div>
-          </div>
-          <div className="program-card">
-            <div className="program-image-box">
-              <img src="/images/fukuokacampus02.jpg" alt="Management" />
-            </div>
-            <div className="program-info-box">
-              <h4>Department of Management</h4>
-            </div>
-          </div>
-          <div className="program-card">
-            <div className="program-image-box">
-              <img src="/images/Internship06.jpg" alt="Commerce" />
-            </div>
-            <div className="program-info-box">
-              <h4>Department of Commerce</h4>
-            </div>
-          </div>
-          <div className="program-card">
-            <div className="program-image-box">
-              <img src="/images/LearningProgression01.jpg" alt="Law" />
-            </div>
-            <div className="program-info-box">
-              <h4>Department of Management Law</h4>
-            </div>
-          </div>
-          <div className="program-card">
-            <div className="program-image-box">
-              <img src="/images/jue-students.jpg" alt="Health and Sports" />
-            </div>
-            <div className="program-info-box">
-              <h4>Health & Sports Management</h4>
-            </div>
-          </div>
+
+      {/* Alumni Inspiration Section [NEW] */}
+      <section className="alumni-inspiration-section reveal" id="mentors">
+        <div className="alumni-content">
+          <h2 className="alumni-title">Be inspired by our students and alumni</h2>
+          <p className="alumni-subtitle">
+            Discover how Education In JAPAN can give you unique opportunities for personal<br className="desktop-break" /> growth and career success.
+          </p>
+          <button 
+            className="alumni-btn" 
+            onClick={() => {
+              setShowStories(true);
+              setTimeout(() => document.getElementById('success').scrollIntoView({ behavior: 'smooth' }), 100);
+            }}
+          >
+            Read Student Stories
+          </button>
         </div>
-      </section>
-
-      {/* Campus Highlights Section */}
-      <section className="highlights reveal" id="highlights">
-        <h2 className="highlights-title">Campus Highlights</h2>
-        <p className="highlights-subtitle">Discover our world-class facilities across Japan</p>
-        <HighlightCarousel />
-      </section>
-
-      {/* Mentors Section (Unified Header Style) [NEW] */}
-      <section className="white-strip-mentors reveal" id="mentors" style={{ background: '#fff', paddingTop: '60px', textAlign: 'center' }}>
-        <h5 className="mentor-header" >
-          CONNECT WITH MENTORS & STUDENTS<br />
-          <span className="mentor-subtitle">Learn from those who have walked the path before you</span>
-        </h5>
       </section>
       
-      <section className="info-bar-row reveal">
-        <div className="info-bar-item">
-          <div className="circle-img-wrapper">
-             <img src="/images/career-jue.jpg" alt="Career Mentors" />
-          </div>
-          <h4>Career Mentors</h4>
-          <p>Direct guidance from industry-aligned faculty.</p>
-        </div>
-        <div className="info-bar-item">
-          <div className="circle-img-wrapper">
-             <img src="/images/jue-students.jpg" alt="Student Leaders" />
-          </div>
-          <h4>Student Leaders</h4>
-          <p>Get insights about campus life from peers.</p>
-        </div>
-      </section>
+
 
       {/* Success Stories Section [NEW] */}
       <section className="success-stories" id="success">
-        <h2 className="success-stories-title">Success Stories</h2>
-        
-        <div className="success-row reveal">
-          <div className="success-img-box">
-             <img src="/images/jue-students.jpg" alt="Student Presentation" />
-          </div>
-          <div className="success-pill">
-            <strong>Kim Seong-min (South Korea) - Professional Athlete</strong><br />
-            "JUE's disciplined environment at the Fukuoka campus was essential in preparing me for the rigors of the Kiwoom Heroes and my journey into professional sports."
-          </div>
-        </div>
+        {showStories && (
+          <>
+            <div className="success-row reveal active">
+              <div className="success-img-box">
+                 <img src="/images/jue-students.jpg" alt="Student Presentation" />
+              </div>
+              <div className="success-pill">
+                <strong>Kim Seong-min (South Korea) - Professional Athlete</strong><br />
+                "JUE's disciplined environment at the Fukuoka campus was essential in preparing me for the rigors of the Kiwoom Heroes and my journey into professional sports."
+              </div>
+            </div>
 
-        <div className="success-row reverse reveal">
-          <div className="success-img-box">
-             <img src="/images/Undergraduate00.jpg" alt="Student Life" />
-          </div>
-          <div className="success-pill">
-            <strong>Garkavenko Hanna (Ukraine) - Japanese Industry</strong><br />
-            "The dedicated career support programs at JUE offered me a lifeline. I am proud to have secured a career here in Japan thanks to their guidance."
-          </div>
-        </div>
+            <div className="success-row reverse reveal active">
+              <div className="success-img-box">
+                 <img src="/images/Undergraduate00.jpg" alt="Student Life" />
+              </div>
+              <div className="success-pill">
+                <strong>Garkavenko Hanna (Ukraine) - Japanese Industry</strong><br />
+                "The dedicated career support programs at JUE offered me a lifeline. I am proud to have secured a career here in Japan thanks to their guidance."
+              </div>
+            </div>
 
-        <div className="success-row reveal">
-          <div className="success-img-box">
-             <img src="/images/fukuokacampus02.jpg" alt="Alumni Founder" />
-          </div>
-          <div className="success-pill">
-            <strong>Kang Rae-soo (South Korea) - CEO & Founder</strong><br />
-            "Founding QuickConnect Co., Ltd. was possible because of the market insights and networking opportunities JUE provided during my Economics degree."
-          </div>
-        </div>
+            <div className="success-row reveal active">
+              <div className="success-img-box">
+                 <img src="/images/fukuokacampus02.jpg" alt="Alumni Founder" />
+              </div>
+              <div className="success-pill">
+                <strong>Kang Rae-soo (South Korea) - CEO & Founder</strong><br />
+                "Founding QuickConnect Co., Ltd. was possible because of the market insights and networking opportunities JUE provided during my Economics degree."
+              </div>
+            </div>
+          </>
+        )}
       </section>
 
-      {/* Video Section */}
-      <section className="video-section reveal">
-        <h2>Experience JUE Life</h2>
-        <div className="video-container">
-          <iframe
-            width="100%"
-            height="100%"
-            src="https://www.youtube.com/embed/tB1vYUFAn5I"
-            title="JUE University Life"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          ></iframe>
-        </div>
-      </section>
+
 
       {/* FAQ Section */}
       <section className="faq reveal" id="faq">
-        <div className="faq-container">
-          <h2 style={{ textAlign: 'center', marginBottom: '40px', color: '#003B6F' }}>Common Questions</h2>
-          <div className="faq-item">
-            <div className="faq-question">Are there vegetarian/halal food options? <span>+</span></div>
-            <div className="faq-answer">Yes, our cafeteria and local urban campuses are surrounded by diverse dining options, and we provide guidance for students with specific dietary needs.</div>
-          </div>
-          <div className="faq-item">
-            <div className="faq-question">What is the safety level in Japan? <span>+</span></div>
-            <div className="faq-answer">Japan is consistently ranked as one of the safest countries globally. Students can safely travel and live even late at night.</div>
-          </div>
-          <div className="faq-item">
-            <div className="faq-question">Can I work part-time while studying? <span>+</span></div>
-            <div className="faq-answer">International students are generally allowed to work up to 28 hours per week with a permit, offering great opportunities for cultural immersion.</div>
+        <div className="faq-header-strip">
+          <h2>FAQs</h2>
+        </div>
+        <div className="faq-container-navy">
+          <div className="faq-list">
+            {faqsList.map((faq, idx) => (
+              <div 
+                key={idx} 
+                className="faq-item-container" 
+                onClick={() => setOpenFaqIndex(openFaqIndex === idx ? null : idx)}
+              >
+                <div className="faq-item">{faq.q}</div>
+                {openFaqIndex === idx && (
+                  <div className="faq-answer-static">{faq.a}</div>
+                )}
+              </div>
+            ))}
           </div>
         </div>
       </section>

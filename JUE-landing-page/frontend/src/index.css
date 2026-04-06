@@ -236,7 +236,7 @@ h3 {
   align-items: center;
   justify-content: center;
   gap: 15px;
-  background-color: #F0F4F8;
+  background-color: transparent;
 }
 
 .welcome-text {
@@ -263,12 +263,15 @@ h3 {
 
 .stats-block {
   display: flex;
+  height: 140px; /* Fixed height for outer box on desktop */
 }
 
 .block-inner {
   position: relative;
   padding-left: 25px;
   text-align: left;
+  overflow: hidden; /* Prevent any visual bleed outside the block */
+  height: 100%; /* Ensure inner matches fixed block height */
 }
 
 .block-inner::before {
@@ -278,8 +281,9 @@ h3 {
   top: 0;
   width: 5px;
   height: 0;
-  background-color: #007bff; /* Vibrant blue bar */
+  background-color: #ffffff; /* White bar */
   transition: height 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 10; /* Anchor line structurally above text */
 }
 
 .block-title {
@@ -299,6 +303,8 @@ h3 {
 
 /* Unified Wrapper for Swapping and Initial Animations */
 .stats-slider-wrapper {
+  position: relative;
+  z-index: 1; /* Slide text beneath the vertical line */
   opacity: 0;
   transform: translateX(-20px);
   transition: opacity 0.5s ease-out, transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
@@ -344,7 +350,7 @@ h3 {
 
 .stat-label {
   font-size: 1rem;
-  color: #1e90ff; /* Bright blue for label */
+  color: #ffffff;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -353,7 +359,7 @@ h3 {
 .stat-value {
   font-size: 1.8rem;
   font-weight: 800;
-  color: #add8e6; /* Light sky blue for value */
+  color: #ffffff;
 }
 
 .welcome-jue {
@@ -1730,7 +1736,7 @@ h3 {
   align-items: center;
   justify-content: flex-start; /* Start entirely from left side */
   gap: 12px;
-  background-color: #F0F4F8; /* Matching user request */
+  background-color: transparent;
   width: 100%;
 }
 
@@ -2145,9 +2151,13 @@ h3 {
     gap: 20px 15px !important;
   }
 
+  .stats-grid .stats-block {
+    height: 110px !important; /* Fixed height for outer box on mobile */
+  }
+
   .stats-grid .block-inner {
     padding-left: 10px !important;
-    border-left-width: 3px !important;
+    height: 100% !important;
   }
 
   .stats-grid .block-title {
@@ -2162,6 +2172,17 @@ h3 {
 
   .stats-grid .stat-value {
     font-size: 1.2rem !important;
+  }
+
+  .welcome-jue {
+    padding: 40px 10px 30px !important;
+  }
+
+  .welcome-jue-title {
+    font-size: clamp(0.7rem, 4.2vw, 1.35rem) !important;
+    white-space: nowrap !important;
+    margin-bottom: 25px !important;
+    letter-spacing: -0.5px !important;
   }
 
   .programs-grid {

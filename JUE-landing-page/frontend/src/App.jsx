@@ -759,7 +759,7 @@ const App = () => {
       </section>
 
       {/* Special Support Detail Section [UPGRADED INTERACTIVE SUB-CAROUSEL] */}
-      <section className="about-program-section reveal active" style={{ padding: '30px 20px' }}>
+      <section className="about-program-section reveal active" style={{ padding: '0 20px' }}>
         <div className="about-program-container">
           <div className="about-program-slider sub-carousel-container">
             {/* Arrows flanking the image for sub-slide navigation */}
@@ -847,8 +847,17 @@ const App = () => {
           </>
         )}
       </section>
-
-
+      {/* Join Our WhatsApp Community CTA Section [NEW] */}
+      <section className="whatsapp-cta-section reveal">
+        <div className="whatsapp-cta-banner">
+          <div className="whatsapp-cta-text">
+            Join Our whatsapp Community for <span className="whatsapp-green">UPDATES</span>
+          </div>
+          <a href="https://chat.whatsapp.com/your-group-link" target="_blank" rel="noopener noreferrer" className="whatsapp-join-btn">
+            JOIN NOW
+          </a>
+        </div>
+      </section>
 
       {/* FAQ Section */}
       <section className="faq reveal" id="faq">

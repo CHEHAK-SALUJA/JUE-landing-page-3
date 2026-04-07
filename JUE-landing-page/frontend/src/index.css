@@ -1706,7 +1706,7 @@ h3 {
 
 /* About Selected Program Section */
 .about-program-section {
-  padding: 10px 20px 40px;
+  padding: 0 20px; /* Zeroed vertical padding */
   background: #fff;
 }
 
@@ -2800,6 +2800,79 @@ h3 {
   color: #003B6F;
 }
 
+/* WhatsApp CTA Section [NEW] */
+.whatsapp-cta-section {
+  padding: 30px 20px;
+  background: #fdfdfd;
+  width: 100%;
+}
+
+.whatsapp-cta-banner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap; /* Standard wrap for safe desktop */
+}
+
+.whatsapp-cta-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.55rem;
+  font-weight: 800;
+  color: #1a4f8a; /* Deep Navy Blue */
+  letter-spacing: -0.5px;
+}
+
+.whatsapp-green {
+  color: #24bd6b; /* Vibrant WhatsApp Green as per image */
+}
+
+.whatsapp-join-btn {
+  border: 4px solid #24bd6b;
+  border-radius: 50px; /* Pill shape */
+  padding: 10px 40px;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+  color: #1a4f8a;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.whatsapp-join-btn:hover {
+  background: #24bd6b;
+  color: white;
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .whatsapp-cta-section {
+    padding: 15px 10px; /* Tight fit for mobile */
+  }
+  .whatsapp-cta-banner {
+    flex-wrap: nowrap; /* Enforce single line */
+    gap: 8px;
+    justify-content: space-between;
+  }
+  .whatsapp-cta-text {
+    font-size: 0.88rem; /* Scaled down to fit one line */
+    text-align: left;
+    line-height: 1.2;
+    flex: 1;
+    white-space: nowrap;
+  }
+  .whatsapp-join-btn {
+    font-size: 0.65rem;
+    padding: 6px 15px;
+    border-width: 2px;
+  }
+}
+
 @media (max-width: 1024px) {
   .about-program-content {
     gap: 30px;
@@ -2859,7 +2932,7 @@ h3 {
   display: flex;
   align-items: center;
   gap: 50px;
-  min-height: 380px; /* Reduced for a tighter vertical fit */
+  min-height: auto; /* Removed minimum height to zero-out space */
 }
 
 .image-carousel-unit {
@@ -2869,7 +2942,7 @@ h3 {
   gap: 15px;
   flex: 1;
   justify-content: center;
-  min-height: 300px; /* Reduced for tighter image layout */
+  min-height: auto; /* Removed minimum height to zero-out space */
 }
 
 .about-program-image.sub-image {
@@ -2951,6 +3024,9 @@ h3 {
 }
 
 @media (max-width: 768px) {
+  .about-program-section {
+    border-bottom: 5px solid white !important; /* Fixed 5px white strip for mobile */
+  }
   .support-detail-layout {
     flex-direction: column;
     gap: 15px; /* Reduced vertical gap as requested */

@@ -360,6 +360,76 @@ const faqsList = [
   { q: "Can I work part-time while studying?", a: "International students are generally allowed to work up to 28 hours per week with a permit, offering great opportunities for cultural immersion." }
 ];
 
+const specialSupportSteps = [
+  { id: "visa", title: "Support for Visa and Admission", img: "/images/visa-jue.png" },
+  { id: "english", title: "English Friendly Programs", img: "/images/language-jue.jpg" },
+  { id: "cities", title: "Study in Japan's Top Cities", img: "/images/fukuokacampus02.jpg" },
+  { id: "meals", title: "Indian Meals Available", img: "/images/cafe00.jpg" },
+  { id: "accommodation", title: "Comfortable Accommodation", img: "/images/accommodation-jue.jpg" },
+  { id: "clubs", title: "Club And Activities", img: "/images/clubs03.jpg" },
+  { id: "safe", title: "Safe Environment", img: "/images/jue-students.jpg" }
+];
+
+const supportSlides = {
+  "visa": [
+    { title: "Direct CoE Guidance", text: "Our International Office provides expert support in securing your Certificate of Eligibility, the first step for your Japanese student visa.", img: "/images/visa-1.png" },
+    { title: "Document Preparation", text: "We assist Indian students with all financial and academic documentation required by the Japanese Immigration Services Agency.", img: "/images/visa-2.png" },
+    { title: "Online Briefings", text: "Participate in mandatory pre-departure sessions where we explain the visa interview process and arrival logistics.", img: "/images/visa-3.png" },
+    { title: "Embassy Support", text: "Get localized advice on visiting the Japanese Embassy in New Delhi or Consulates in Mumbai, Chennai, and Kolkata.", img: "/images/visa-4.png" },
+    { title: "Arrival Logistics", text: "From CoE to Residence Card, JUE ensures your legal status in Japan is managed professionally from day one.", img: "/images/visa-5.png" }
+  ],
+  "english": [
+    { title: "Global Classrooms", text: "Join diverse classes where core economics and management subjects are taught entirely in English by international faculty.", img: "/images/english-1.png" },
+    { title: "Interactive Seminars", text: "Participate in small-group discussions and case studies conducted in English to build your global business vocabulary.", img: "/images/english-2.png" },
+    { title: "Digital Resources", text: "Access a wide range of English-language journals, textbooks, and online research databases through the JUE library system.", img: "/images/english-3.png" },
+    { title: "Expert Tutoring", text: "Work closely with bilingual professors who understand the needs of international students and provide academic guidance in English.", img: "/images/english-4.png" },
+    { title: "Global Degree Path", text: "Graduate with a degree recognized worldwide, opening doors to careers in Japan, India, and beyond.", img: "/images/english-5.png" }
+  ],
+  "cities": [
+    { title: "Tokyo: Global Hub", text: "Experience the heartbeat of Japan in Shibuya, Tokyo. Study at the center of world-class technology, fashion, and business.", img: "/images/cities-1.png" },
+    { title: "Fukuoka: Asian Gateway", text: "Our main campus in Dazaifu, Fukuoka, offers a warm climate, lower living costs, and a high-quality international lifestyle.", img: "/images/cities-2.png" },
+    { title: "Kobe: Business Port", text: "Study in the historical port city of Kobe, known for its international atmosphere and vibrant Sannomiya business district.", img: "/images/cities-3.png" },
+    { title: "Modern Campus Life", text: "All JUE campuses feature state-of-the-art facilities, from glass-walled study lounges to high-tech computer labs.", img: "/images/cities-4.png" },
+    { title: "Connected Japan", text: "Travel easily between Tokyo, Kobe, and Fukuoka using Japan's efficient Shinkansen bullet train network.", img: "/images/cities-5.png" }
+  ],
+  "meals": [
+    { title: "Authentic Indian Thalis", text: "Savor the taste of home with traditional thalis featuring dal, paneer, and fresh vegetables prepared with authentic spices.", img: "/images/meals-1.png" },
+    { title: "Cross-Cultural Dining", text: "Our cafeterias are social hubs where Indian and Japanese students share meals and build lifelong cross-cultural friendships.", img: "/images/meals-2.png" },
+    { title: "Vegetarian Excellence", text: "JUE prioritizes dietary needs, offering a wide range of high-quality vegetarian and vegan meal options every day.", img: "/images/cafe00.jpg" },
+    { title: "Healthy Campus Food", text: "All meals are prepared in hygienic, modern facilities with a focus on nutritional balance and student wellness.", img: "/images/cafe00.jpg" },
+    { title: "Global Flavors", text: "Beyond Indian and Japanese cuisine, our dining halls offer variety to cater to students from over 20 different countries.", img: "/images/cafe00.jpg" }
+  ],
+  "accommodation": [
+    { title: "Modern Dormitories", text: "Safe, clean, and fully furnished student residences are located within walking distance of all our campuses.", img: "/images/accommodation-jue.jpg" },
+    { title: "Comfortable Rooms", text: "Each student room is equipped with high-speed internet, a study desk, and climate control for a productive living environment.", img: "/images/accommodation.png" },
+    { title: "Shared Life", text: "Kitchen and lounge areas provide spaces to cook Indian meals together and bond with fellow international students.", img: "/images/accommodation01.jpg" },
+    { title: "Secure Housing", text: "JUE housing features electronic keycard access and 24/7 on-call staff to ensure your safety and peace of mind.", img: "/images/fukuokacampus03.jpg" },
+    { title: "Serene Surroundings", text: "Many of our residences are surrounded by green spaces and traditional Japanese gardens, offering a peaceful retreat after classes.", img: "/images/garden03.jpg" }
+  ],
+  "clubs": [
+    { title: "Traditional Arts", text: "Join clubs for Kendo, Tea Ceremony, or Calligraphy to deeply immerse yourself in Japan's rich cultural heritage.", img: "/images/clubs03.jpg" },
+    { title: "Sports & Fitness", text: "From soccer to basketball, our athletic clubs help you stay active and make friends through team-based competition.", img: "/images/clubs06.jpg" },
+    { title: "Business Societies", text: "Participate in student-led organizations that focus on entrepreneurship, marketing, and global economic trends.", img: "/images/clubs08.jpg" },
+    { title: "Global Networking", text: "The International Student Union hosts regular mixers, cultural festivals, and networking events for all JUE students.", img: "/images/clubs10.jpg" },
+    { title: "Modern Facilities", text: "JUE provides high-quality gyms and courts for all student clubs to practice and host friendly matches.", img: "/images/basketball.png" }
+  ],
+  "safe": [
+    { title: "Smiling Community", text: "Japan is one of the world's safest nations, and JUE provides a welcoming, high-trust environment for every student.", img: "/images/jue-students.jpg" },
+    { title: "Secure Campuses", text: "Our campuses are well-lit and feature comprehensive security teams, ensuring a safe learning environment at any hour.", img: "/images/jue-open.jpg" },
+    { title: "Health & Wellness", text: "Access on-campus medical checkups and counseling services to support your physical and emotional well-being throughout your studies.", img: "/images/support04.jpg" },
+    { title: "Parental Peace of Mind", text: "We maintain regular contact with families and provide a secure support system so parents in India can feel confident.", img: "/images/why-parents.png" },
+    { title: "Always Connected", text: "JUE's emergency support network and community mentors are available 24/7 to assist international students with any situation.", img: "/images/community.png" }
+  ]
+};
+
+const programImages = {
+  "Department of Economics": "/images/Undergraduate00.jpg",
+  "Department of Management": "/images/fukuokacampus02.jpg",
+  "Department of Commerce": "/images/Internship06.jpg",
+  "Department of Management Law": "/images/LearningProgression01.jpg",
+  "Health & Sports Management": "/images/jue-students.jpg"
+};
+
 const JourneySection = ({ isActive }) => {
   // S-Curve Bezier Path
   const pathData = "M 20 85 C 80 85, 20 15, 80 15";
@@ -373,7 +443,7 @@ const JourneySection = ({ isActive }) => {
   return (
     <section className="journey-wrapper reveal" id="journey">
       <div className="journey-header">
-        <h2>Your Journey from India to Japan <span className="arrow">→</span></h2>
+        <h2>Your Journey from India to Japan</h2>
       </div>
       <div className="journey-container">
         {/* Maps */}
@@ -418,7 +488,7 @@ const JourneySection = ({ isActive }) => {
                 <div 
                   className={`step-text-container ${step.align} ${isActive ? 'fade-in-on-pass' : ''}`}
                   style={{ 
-                    animationDelay: `${step.t * 12}s`
+                    animationDelay: `${step.t * 10}s`
                   }}
                 >
                   <div className="step-title" style={{ color: dotColor }}>{step.title}</div>
@@ -453,6 +523,31 @@ const App = () => {
   const [showStories, setShowStories] = useState(false);
   const [openFaqIndex, setOpenFaqIndex] = useState(null);
   const [isJourneyActive, setIsJourneyActive] = useState(false);
+  const [selectedSupport, setSelectedSupport] = useState("visa");
+  const [activeSupportSlide, setActiveSupportSlide] = useState(0);
+  const [slideAnim, setSlideAnim] = useState('active');
+
+  useEffect(() => {
+    setActiveSupportSlide(0);
+  }, [selectedSupport]);
+
+  const nextSupportSlide = () => {
+    setSlideAnim('exit');
+    setTimeout(() => {
+      const slides = supportSlides[selectedSupport];
+      setActiveSupportSlide((prev) => (prev + 1) % slides.length);
+      setSlideAnim('active');
+    }, 300);
+  };
+
+  const prevSupportSlide = () => {
+    setSlideAnim('exit');
+    setTimeout(() => {
+      const slides = supportSlides[selectedSupport];
+      setActiveSupportSlide((prev) => (prev - 1 + slides.length) % slides.length);
+      setSlideAnim('active');
+    }, 300);
+  };
   
   const [statSetIndex, setStatSetIndex] = useState(0);
   const [statAnim, setStatAnim] = useState('active');
@@ -592,75 +687,37 @@ const App = () => {
         </div>
       </section>
 
-      {/* Programs We Offer Section [NEW] */}
+       {/* Programs We Offer Section [NEW] */}
       <section className="programs reveal" id="programs">
         <h2 className="programs-title">PROGRAMS WE OFFER</h2>
         <div className="programs-grid">
-          <div 
-            className={`program-card ${selectedProgram === "Department of Economics" ? 'active-card' : ''}`}
-            onClick={() => setSelectedProgram("Department of Economics")}
-          >
-            <div className="program-image-box">
-              <img src="/images/Undergraduate00.jpg" alt="Economics" />
-            </div>
-            <div className="program-info-box">
-              <h4>Department of Economics</h4>
-            </div>
-          </div>
-          <div 
-            className={`program-card ${selectedProgram === "Department of Management" ? 'active-card' : ''}`}
-            onClick={() => setSelectedProgram("Department of Management")}
-          >
-            <div className="program-image-box">
-              <img src="/images/fukuokacampus02.jpg" alt="Management" />
-            </div>
-            <div className="program-info-box">
-              <h4>Department of Management</h4>
-            </div>
-          </div>
-          <div 
-            className={`program-card ${selectedProgram === "Department of Commerce" ? 'active-card' : ''}`}
-            onClick={() => setSelectedProgram("Department of Commerce")}
-          >
-            <div className="program-image-box">
-              <img src="/images/Internship06.jpg" alt="Commerce" />
-            </div>
-            <div className="program-info-box">
-              <h4>Department of Commerce</h4>
-            </div>
-          </div>
-          <div 
-            className={`program-card ${selectedProgram === "Department of Management Law" ? 'active-card' : ''}`}
-            onClick={() => setSelectedProgram("Department of Management Law")}
-          >
-            <div className="program-image-box">
-              <img src="/images/LearningProgression01.jpg" alt="Law" />
-            </div>
-            <div className="program-info-box">
-              <h4>Department of Management Law</h4>
-            </div>
-          </div>
-          <div 
-            className={`program-card ${selectedProgram === "Health & Sports Management" ? 'active-card' : ''}`}
-            onClick={() => setSelectedProgram("Health & Sports Management")}
-          >
-            <div className="program-image-box">
-              <img src="/images/jue-students.jpg" alt="Health and Sports" />
-            </div>
-            <div className="program-info-box">
-              <h4>Health & Sports Management</h4>
-            </div>
-          </div>
+          {Object.keys(programImages).map((prog, idx) => (
+             <div 
+               key={idx}
+               className={`program-card ${selectedProgram === prog ? 'active-card' : ''}`}
+               onClick={() => setSelectedProgram(prog)}
+             >
+               <div className="program-image-box">
+                 <img src={programImages[prog]} alt={prog} />
+               </div>
+               <div className="program-info-box">
+                 <h4>{prog}</h4>
+               </div>
+             </div>
+          ))}
         </div>
       </section>
 
-      {/* About Selected Program Section [NEW] */}
-      <section className="about-program-section reveal">
-        <div className="about-program">
-          <h2 className="about-program-title">About {selectedProgram}</h2>
-          <p className="about-program-text">
-            {programDetails[selectedProgram]}
-          </p>
+      {/* About Selected Program Section [REFINED NAVY BOX STYLE] */}
+      <section className="about-program-section reveal active" style={{ padding: '40px 20px' }}>
+        <div className="about-program-container">
+          <div className="program-detail-box">
+             <h2 className="about-program-title">About {selectedProgram}</h2>
+             <div className="about-program-underline"></div>
+             <p className="about-program-text">
+               {programDetails[selectedProgram]}
+             </p>
+          </div>
         </div>
       </section>
 
@@ -678,6 +735,58 @@ const App = () => {
       {/* Why JUE / Why Japan Slider */}
       <section className="reveal" id="features">
         <FeatureSlider />
+      </section>
+
+      {/* Special Support for Indian Students Section [RELOCATED] */}
+      <section className="special-support-section reveal">
+        <h2 className="special-support-title">Special Support for Indian Students</h2>
+        <div className="support-grid">
+          {specialSupportSteps.map((step, idx) => (
+            <div 
+              key={idx} 
+              className={`support-card ${selectedSupport === step.id ? 'active-card-support' : ''}`}
+              onClick={() => setSelectedSupport(step.id)}
+            >
+              <div className="support-img-box">
+                <img src={step.img} alt={step.title} />
+              </div>
+              <div className="support-info-box">
+                <p>{step.title}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Special Support Detail Section [UPGRADED INTERACTIVE SUB-CAROUSEL] */}
+      <section className="about-program-section reveal active" style={{ padding: '30px 20px' }}>
+        <div className="about-program-container">
+          <div className="about-program-slider sub-carousel-container">
+            {/* Arrows flanking the image for sub-slide navigation */}
+            <div className="support-detail-layout">
+              <div className="image-carousel-unit">
+                <button className="sub-arrow left" onClick={prevSupportSlide}>‹</button>
+                <div className={`about-program-image sub-image ${slideAnim}`}>
+                  <img src={supportSlides[selectedSupport][activeSupportSlide].img} alt="Support" />
+                </div>
+                <button className="sub-arrow right" onClick={nextSupportSlide}>›</button>
+              </div>
+              
+              <div className={`about-program-info sub-info ${slideAnim}`}>
+                <h2 className="about-program-title">{supportSlides[selectedSupport][activeSupportSlide].title}</h2>
+                <div className="about-program-underline"></div>
+                <p className="about-program-text">
+                  {supportSlides[selectedSupport][activeSupportSlide].text}
+                </p>
+                <div className="slide-dots">
+                   {supportSlides[selectedSupport].map((_, i) => (
+                     <span key={i} className={`slide-dot ${i === activeSupportSlide ? 'active' : ''}`}></span>
+                   ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
 

@@ -360,7 +360,7 @@ const faqsList = [
   { q: "Can I work part-time while studying?", a: "International students are generally allowed to work up to 28 hours per week with a permit, offering great opportunities for cultural immersion." }
 ];
 
-const JourneySection = () => {
+const JourneySection = ({ isActive }) => {
   // S-Curve Bezier Path
   const pathData = "M 20 85 C 80 85, 20 15, 80 15";
 
@@ -391,10 +391,11 @@ const JourneySection = () => {
             strokeDasharray="1.5, 1.5" 
             vectorEffect="non-scaling-stroke"
           />
-          
-          {/* Auto-Rotating SVG Airplane animating over exact path */}
-          <image href="/images/airplane-removebg-preview.png" width="12" height="12" x="-6" y="-6">
-             <animateMotion dur="12s" repeatCount="indefinite" rotate="auto" path={pathData} />
+          {/* Fixed Horizontal SVG Airplane animating over exact path - Stopping at end & Bigger size */}
+          <image href="/images/airplane-removebg-preview.png" width="20" height="20" x="-10" y="-10" transform="rotate(30)">
+             {isActive && (
+               <animateMotion dur="12s" repeatCount="1" fill="freeze" path={pathData} />
+             )}
           </image>
         </svg>
 
@@ -404,14 +405,27 @@ const JourneySection = () => {
            const y = getBezierPoint(step.t, 85, 85, 15, 15);
            const dotColor = step.color === 'green' ? '#2ecc71' : '#3498db';
 
-           return (
-             <div key={idx} className="journey-marker" style={{ left: `${x}%`, top: `${y}%`, borderColor: dotColor }}>
-               <div className={`step-text-container ${step.align}`}>
-                 <div className="step-title" style={{ color: dotColor }}>{step.title}</div>
-                 <div className="step-sub">{step.sub}</div>
-               </div>
-             </div>
-           );
+            return (
+              <div 
+                key={idx} 
+                className="journey-marker" 
+                style={{ 
+                  left: `${x}%`, 
+                  top: `${y}%`, 
+                  borderColor: dotColor
+                }}
+              >
+                <div 
+                  className={`step-text-container ${step.align} ${isActive ? 'fade-in-on-pass' : ''}`}
+                  style={{ 
+                    animationDelay: `${step.t * 12}s`
+                  }}
+                >
+                  <div className="step-title" style={{ color: dotColor }}>{step.title}</div>
+                  <div className="step-sub">{step.sub}</div>
+                </div>
+              </div>
+            );
         })}
       </div>
     </section>
@@ -438,6 +452,7 @@ const App = () => {
   const [selectedProgram, setSelectedProgram] = useState("Department of Economics");
   const [showStories, setShowStories] = useState(false);
   const [openFaqIndex, setOpenFaqIndex] = useState(null);
+  const [isJourneyActive, setIsJourneyActive] = useState(false);
   
   const [statSetIndex, setStatSetIndex] = useState(0);
   const [statAnim, setStatAnim] = useState('active');
@@ -469,9 +484,12 @@ const App = () => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('active');
+          if (entry.target.id === 'journey') {
+            setIsJourneyActive(true);
+          }
         }
       });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.2 });
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     return () => observer.disconnect();
@@ -647,12 +665,13 @@ const App = () => {
       </section>
 
       {/* New Journey Section Implementation */}
-      <JourneySection />
+      <JourneySection isActive={isJourneyActive} />
 
-      {/* Community Row Header [NEW] */}
-      <section className="community-cta reveal">
+      {/* Community Row Header [REFINED] */}
+      <section className="community-cta reveal" style={{ position: 'relative', overflow: 'visible' }}>
         <h2 className="community-home-text">
-          We understand your concerns <span className="animated-emoji">🤔</span>
+          <span className="white-text">Your concerns</span> <span className="green-highlight">NOW SOLVED</span>
+          <span className="animated-emoji">🤔</span>
         </h2>
       </section>
 
